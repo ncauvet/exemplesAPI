@@ -35,7 +35,10 @@ Partial Class Form1
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
         Me.ListBox1 = New System.Windows.Forms.ListBox()
-        Me.IAM = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IAM = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.POSO = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.CI = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.PE = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.Drug = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.HiddenLine = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
@@ -149,7 +152,7 @@ Partial Class Form1
         'DataGridView2
         '
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IAM, Me.Drug, Me.HiddenLine})
+        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IAM, Me.POSO, Me.CI, Me.PE, Me.Drug, Me.HiddenLine})
         Me.DataGridView2.Location = New System.Drawing.Point(12, 166)
         Me.DataGridView2.Name = "DataGridView2"
         Me.DataGridView2.Size = New System.Drawing.Size(447, 200)
@@ -169,7 +172,25 @@ Partial Class Form1
         '
         Me.IAM.HeaderText = "IAM"
         Me.IAM.Name = "IAM"
-        Me.IAM.ReadOnly = True
+        Me.IAM.Width = 25
+        '
+        'POSO
+        '
+        Me.POSO.HeaderText = "POSO"
+        Me.POSO.Name = "POSO"
+        Me.POSO.Width = 25
+        '
+        'CI
+        '
+        Me.CI.HeaderText = "CI"
+        Me.CI.Name = "CI"
+        Me.CI.Width = 25
+        '
+        'PE
+        '
+        Me.PE.HeaderText = "PE"
+        Me.PE.Name = "PE"
+        Me.PE.Width = 25
         '
         'Drug
         '
@@ -221,7 +242,10 @@ Partial Class Form1
     Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents DataGridView2 As System.Windows.Forms.DataGridView
     Friend WithEvents ListBox1 As System.Windows.Forms.ListBox
-    Friend WithEvents IAM As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents IAM As System.Windows.Forms.DataGridViewCheckBoxColumn
+    Friend WithEvents POSO As System.Windows.Forms.DataGridViewCheckBoxColumn
+    Friend WithEvents CI As System.Windows.Forms.DataGridViewCheckBoxColumn
+    Friend WithEvents PE As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents Drug As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents HiddenLine As System.Windows.Forms.DataGridViewTextBoxColumn
 

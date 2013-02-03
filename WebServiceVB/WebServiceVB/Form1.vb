@@ -76,7 +76,7 @@
                                                                  drugType, 10, PrescriptionServiceReference.DurationType.DAY
                                                                  )
 
-        DataGridView2.Rows.Add(Nothing, drugName, prescriptionLine)
+        DataGridView2.Rows.Add(Nothing, Nothing, Nothing, Nothing, drugName, prescriptionLine)
         
         fireAnalyse()
 
@@ -120,7 +120,7 @@
             End If
         Next
 
-        'analys structuree
+        'analyse structuree
         Dim result As PrescriptionServiceReference.prescriptionAnalysis = prescriptionService.getAlerts(Label1.Text, ordo)
         If result IsNot Nothing Then
 
@@ -130,6 +130,27 @@
                 If line.drug.safetyAlert <> True Then
                     DataGridView2.Rows(i).DefaultCellStyle.BackColor = Color.Red
                 End If
+                'get alerts xith the Linq functions
+                Dim iam = From a In line.alertList Where a.type = "DRUG_INTERACTION"
+                Dim CI = From a In line.alertList Where a.type = "CONTRA_INDICATION"
+                Dim PE = From a In line.alertList Where a.type = "PRECAUTION"
+                Dim allergies = From a In line.alertList Where a.type = "ALLERGY"
+                Dim poso = From a In line.alertList Where a.type = "POSOLOGY"
+                '... see all the alertes in the documentation
+
+                If iam.Count() > 0 Then
+                    DataGridView2.Rows(i).Cells("IAM").Value = True
+                End If
+                If CI.Count() > 0 Then
+                    DataGridView2.Rows(i).Cells("CI").Value = True
+                End If
+                If PE.Count() > 0 Then
+                    DataGridView2.Rows(i).Cells("PE").Value = True
+                End If
+                If poso.Count() > 0 Then
+                    DataGridView2.Rows(i).Cells("POSO").Value = True
+                End If
+
             Next
         End If
 
