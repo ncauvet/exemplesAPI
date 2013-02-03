@@ -77,7 +77,7 @@
                                                                  )
 
         DataGridView2.Rows.Add(Nothing, drugName, prescriptionLine)
-
+        
         fireAnalyse()
 
 
@@ -119,10 +119,24 @@
                 ordo.Add(row.Cells("HiddenLine").Value)
             End If
         Next
-        
-        Dim titi As String = prescriptionService.getAlertsAsHTML(Label1.Text, ordo)
 
-        WebBrowser1.DocumentText = titi
+        'analys structuree
+        Dim result As PrescriptionServiceReference.prescriptionAnalysis = prescriptionService.getAlerts(Label1.Text, ordo)
+        If result IsNot Nothing Then
+
+            For i As Integer = 0 To result.prescriptionLineAnalysisList.Count - 1
+                Dim line As PrescriptionServiceReference.prescriptionLineAnalysis = result.prescriptionLineAnalysisList.Item(i)
+
+                If line.drug.safetyAlert <> True Then
+                    DataGridView2.Rows(i).DefaultCellStyle.BackColor = Color.Red
+                End If
+            Next
+        End If
+
+            'analyse html
+            Dim titi As String = prescriptionService.getAlertsAsHTML(Label1.Text, ordo)
+
+            WebBrowser1.DocumentText = titi
     End Sub
 
 End Class
